@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Escola {
+  id        Int    @id @default(autoincrement())
+  nome      String
+  internet  Boolean @default(false)
+  laboratorio Boolean @default(false)
+  zona      String
+  computadoresPorAluno Float @default(0)
+}
+
+ 
+model User { 
+  id String @id @default(cuid()) 
+  email String @unique 
+  password String 
+  createdAt DateTime @default(now()) 
+} 
+
+model Metric { 
+  id String @id @default(cuid()) 
+  label String 
+  value Float 
+  createdAt DateTime @default(now()) 
+
+} 
+
+ 
